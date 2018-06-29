@@ -11,26 +11,25 @@
 
 void moves_keys(t_game *game)
 {
+	sfVector2f mv_vec = {0, 0};
+
 	switch ((int) game->event->key.code) {
 	case sfKeyRight:
-		game->translate->x += 10;
-		update_vertex_array(game);
+		mv_vec.x = -10;
 		break;
 	case sfKeyDown:
-		game->translate->y += 8;
-		update_vertex_array(game);
+		mv_vec.y = -10;
 		break;
 	case sfKeyUp:
-		game->translate->y -= 8;
-		update_vertex_array(game);
+		mv_vec.y = 10;
 		break;
 	case sfKeyLeft:
-		game->translate->x -= 10;
-		update_vertex_array(game);
+		mv_vec.x = 10;
 		break;
 	default:
 		break;
 	}
+	sfView_move(game->view, mv_vec);
 }
 
 void manage_keys(t_game *game)
